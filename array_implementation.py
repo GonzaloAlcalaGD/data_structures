@@ -58,7 +58,7 @@ class MyArray():
         Inserts element in the desired index.
         """
         if idx > self.length-1:
-            print(f'Index: {idx} out of bound. Inserting at the end of the array.')
+            print(f'Index: {idx} out of bound. Inserting at the end of the array.') # This is not Javascript for god's sake
             self.push(item)
         else:
             print('else')
@@ -66,17 +66,16 @@ class MyArray():
             for index in range(self.length-1, idx, -1):
                 self.data[index] = self.data[index-1]
             self.data[idx] = item
+    
 
-
-
-
-first_array = MyArray()
-
-first_array.push(1)
-first_array.push(2)
-first_array.push(3)
-first_array.push(4)
-
+    def delete(self, idx):
+        if idx < 0 or idx >= self.length:
+            return str(f'Index out of bounds can\'t access index: {idx}')
+        else:     
+            for index in range(idx, self.length-1):
+                self.data[index] = self.data[index+1]
+            del self.data[self.length-1]
+            self.length -= 1
 
 
 
