@@ -21,6 +21,17 @@ class MyArray():
         return str(self.__dict__)
 
 
+    def push(self, item) -> None:
+        """
+        Adds item to the end of the array
+        """
+        self.length += 1
+        self.data[self.length - 1] = item
+
+
+
 first_array = MyArray()
+
+first_array.push(1)
 
 print(first_array)
