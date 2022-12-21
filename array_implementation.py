@@ -29,9 +29,20 @@ class MyArray():
         self.data[self.length - 1] = item
 
 
+    def get(self, idx):
+        """
+        Returns element inside the index provided.
+        If index doesn't exist returns out of bound error message.
+        """
+        if self.data.get(idx):
+            return self.data[idx]
+        else:
+            return str(f'Out of bound error, index : {idx} doesn\'t exist inside the array')
+
 
 first_array = MyArray()
 
-first_array.push(1)
 
 print(first_array)
+
+
