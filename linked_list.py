@@ -19,4 +19,10 @@ class Queue():
 
 
     def __init__(self) -> None:
-        pass
+        """
+        The 'first' attribute points at the front of the Queue (First element entered).
+        The 'last' attribute points at th end of the Queue (Last element entered).
+        """
+        self.first = None
+        self.last = None
+        self.length = 0
