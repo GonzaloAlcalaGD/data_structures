@@ -40,9 +40,25 @@ class HashTable:
         
         return self.__str__()
 
+    
+    def get(self, key):
+        """
+        Returns the value inside the hashed key in our hash map.
+        """
+        hash = self._hash(key)
+        if self.data[hash]:
+            hash_items = len(self.data[hash])
+            for keys in range(hash_items):
+                if self.data[hash][keys][0] == key:
+                    return self.data[hash][keys][1]
+        else:
+            return None
 
 
 my_hash = HashTable(4)
 
 print(my_hash.set('grape', 10))
-# print(my_hash)
+print(my_hash.set('orange', 5))
+print(my_hash.get('grape'))
+print(my_hash.get('orange'))
+
