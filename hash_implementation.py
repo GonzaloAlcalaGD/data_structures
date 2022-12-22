@@ -1,4 +1,4 @@
-class HashTable:
+class HashTable():
     """
     Python implementation of hash tables.
     """

@@ -1,6 +1,6 @@
-class Node:
+class Node():
     """
-    Node implementation in Python
+    Node implementation in Python.
     """
 
 
@@ -10,3 +10,13 @@ class Node:
         """
         self.data = data
         self.next = None
+
+
+class Queue():
+    """
+    Queue implementation in Python.
+    """
+
+
+    def __init__(self) -> None:
+        pass
