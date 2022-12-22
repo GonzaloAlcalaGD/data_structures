@@ -71,6 +71,17 @@ class HashTable:
         return keys_list
 
 
+    def values(self) -> list:
+        """
+        Returns all the values inside our hash map
+        """
+        values_list = []
+        for i in range(self.size):
+            if self.data[i]:
+                key_items = len(self.data[i])
+                for j in range(key_items):
+                    values_list.append(self.data[i][j][1])
+        return values_list
 
 
 my_hash = HashTable(4)
@@ -80,3 +91,4 @@ print(my_hash.set('orange', 5))
 print(my_hash.get('grape'))
 print(my_hash.get('orange'))
 print(my_hash.keys())
+print(my_hash.values())
