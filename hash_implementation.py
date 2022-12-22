@@ -24,10 +24,25 @@ class HashTable:
         """
         Returns the hash of provided object
         """
-        return hash(key)
+        return hash(key) % self.size
+
+    
+    def set(self, key, value) -> str:
+        """
+        Set the key-value with the corresponding hash value if hash is not present in our list.
+        If the hash exists it appends the value to the corresponding hash
+        """
+        hash = self._hash(key)
+        if not self.data[hash]:
+            self.data[hash] = [[key, value]]
+        else:
+            self.data[hash].append([key, value])
+        
+        return self.__str__()
+
 
 
 my_hash = HashTable(4)
 
-print(my_hash._hash('grape'))
-print(my_hash)
+print(my_hash.set('grape', 10))
+# print(my_hash)
