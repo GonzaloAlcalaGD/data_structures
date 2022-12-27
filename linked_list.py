@@ -26,3 +26,24 @@ class Queue():
         self.first = None
         self.last = None
         self.length = 0
+
+    
+    def enqueue(self, data) -> None:
+        """
+        Queues the nodes into the list
+        If the list it's empty it will make both last and first point to the new node.
+        If not empty it will make the next of thenew node points to the present last 
+        node and then make  last node point the new node.
+        """
+        new_node = Node(data)
+
+        if not self.last:
+            self.last = new_node
+            self.first = self.last
+            self.length += 1
+            return 
+        else:
+            self.last.next = new_node
+            self.last = new_node
+            self.length += 1
+            return
