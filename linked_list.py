@@ -1,3 +1,7 @@
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+
 class Node():
     """
     Node implementation in Python.
@@ -47,3 +51,4 @@ class Queue():
             self.last = new_node
             self.length += 1
             return
+    
