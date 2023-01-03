@@ -34,7 +34,7 @@ class Queue():
     
     def enqueue(self, data) -> None:
         """
-        Queues the nodes into the list
+        Appends the nodes into the list
         If the list it's empty it will make both last and first point to the new node.
         If not empty it will make the next of thenew node points to the present last 
         node and then make  last node point the new node. 
@@ -52,3 +52,17 @@ class Queue():
             self.length += 1
             return
     
+
+    def dequeue(self) -> None:
+        """
+        If the list it's empty it will return the apropiate message.
+        If not, it will simply move the self.first to the next node in the queue.
+        """
+        if not self.last:
+            logging.info('Queue empty.')
+            return
+        if self.last == self.first:
+            self.last = None
+        self.first = self.first.next
+        self.length -= 1
+        return
