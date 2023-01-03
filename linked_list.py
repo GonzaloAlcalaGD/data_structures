@@ -16,7 +16,7 @@ class Node():
         self.next = None
 
 
-class Queue():
+class LinkedList():
     """
     Queue implementation in Python.
     """
@@ -42,12 +42,19 @@ class Queue():
         while node is not None:
             nodes.append(node.data)
             node = node.next
-        
         nodes.append('None')
-        return str(' -> '.join(nodes))
+
+        return ' -> '.join(str(item) for item in nodes)
     
 
-    def append(self, data) -> None:
+    def __iter__(self) -> None:
+        node = self.head
+
+        while node is not None:
+            yield node
+            node = node.next
+
+    def prepend(self, data) -> None:
         """
         Inserts the node to the first position in the list.
         """
@@ -55,21 +62,37 @@ class Queue():
 
         new_node.next = self.head
         self.head = new_node
-    
+        self.length += 1
 
-    def dequeue(self) -> None:
-        """
-        If the list it's empty it will return the apropiate message.
-        If not, it will simply move the self.first to the next node in the queue.
-        """
-        if not self.tail:
-            logging.info('Queue empty.')
-            return
-        if self.tail == self.head:
-            self.tail = None
-        self.head = self.head.next
-        self.length -= 1
         return
 
     
+    def append(self, data) -> None:
+        """
+        Inserts the node to the last position in the list.
+        """
+        
+        new_node = Node(data)
+
+        if self.head is None:
+            self.head = new_node
+            self.length += 1
+            return
+        
+        for current_node in self:
+            pass
+        current_node.next = new_node
+
+        return
     
+
+    
+myList = LinkedList()
+myList.append(10)
+myList.append('b')
+myList.append(11)
+myList.prepend(9)
+myList.prepend('a')
+myList.append(12)
+myList.prepend(8)
+print(myList)
