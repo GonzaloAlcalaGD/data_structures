@@ -27,12 +27,27 @@ class Queue():
         The 'first' attribute points at the front of the Queue (First element entered).
         The 'last' attribute points at th end of the Queue (Last element entered).
         """
-        self.first = None
-        self.last = None
+        self.head = None
+        self.tail = None
         self.length = 0
 
+
+    def __repr__(self) -> str:
+        """
+        Prints the current nodes in our list.
+        """
+        node = self.head
+        nodes = []
+
+        while node is not None:
+            nodes.append(node.data)
+            node = node.next
+        
+        nodes.append('None')
+        return str(' -> '.join(nodes))
     
-    def enqueue(self, data) -> None:
+
+    def append(self, data) -> None:
         """
         Appends the nodes into the list
         If the list it's empty it will make both last and first point to the new node.
@@ -41,14 +56,14 @@ class Queue():
         """
         new_node = Node(data)
 
-        if not self.last:
-            self.last = new_node
-            self.first = self.last
+        if not self.tail:
+            self.tail = new_node
+            self.head = self.tail
             self.length += 1
             return 
         else:
-            self.last.next = new_node
-            self.last = new_node
+            self.tail.next = new_node
+            self.tail = new_node
             self.length += 1
             return
     
@@ -58,11 +73,14 @@ class Queue():
         If the list it's empty it will return the apropiate message.
         If not, it will simply move the self.first to the next node in the queue.
         """
-        if not self.last:
+        if not self.tail:
             logging.info('Queue empty.')
             return
-        if self.last == self.first:
-            self.last = None
-        self.first = self.first.next
+        if self.tail == self.head:
+            self.tail = None
+        self.head = self.head.next
         self.length -= 1
         return
+
+    
+    
