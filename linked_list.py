@@ -89,7 +89,7 @@ class LinkedList():
         return
 
     
-    def insert(self, idx, data) -> None:
+    def insert(self, idx: int, data) -> None:
         """
         Insert the node at the desired index position.
         """
@@ -118,18 +118,59 @@ class LinkedList():
         return
 
     
+    def remove(self, idx: int) -> None:
+        """
+        Removes the desired node.
+        """
+        head = self.head
+        count = 0
+
+        if idx < 0 or idx > self.length:
+            logging.warning('Invalid index')
+        
+        if idx == 0:
+            self.head = self.head.next 
+            self.length -= 1
+            return
+        
+        while count < self.length:
+            if count == idx-1:
+                head.next = head.next.next
+                self.length -= 1
+                if idx  == self.length:
+                    self.tail = head
+                break
+            count += 1
+            head = head.next
+        return
+
+    
+    def reverse(self) -> None:
+        """
+        Reverses the linked list by traversing it backwards.
+        """
+        prev = None
+        self.tail = self.head
+        while self.head is not None:
+            temp = self.head
+            self.head = self.head.next
+            temp.next = prev
+            prev = temp
+        self.head = temp
+        return
+
+
+
 myList = LinkedList()
-myList.append(10)
+myList.append('a')
 myList.append('b')
-myList.append(11)
-myList.prepend(9)
-myList.prepend('a')
-myList.append(12)
-myList.prepend(8)
-myList.prepend(7)
-myList.insert(idx = 3, data = 'z')
-myList.insert(idx = 9, data = 13)
-myList.insert(idx = 0, data = 6)
+myList.append('c')
+myList.append('d')
+print(myList)
+print(f'Length: {myList.length}')
+print(f'Head: {myList.head.data}')
+print(f'Tail: {myList.tail.data}')
+myList.reverse()
 print(myList)
 print(f'Length: {myList.length}')
 print(f'Head: {myList.head.data}')
