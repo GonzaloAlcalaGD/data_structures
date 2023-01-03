@@ -82,7 +82,7 @@ class LinkedList():
         for current_node in self:
             pass
         current_node.next = new_node
-
+        self.length += 1
         return
     
 
@@ -96,3 +96,4 @@ myList.prepend('a')
 myList.append(12)
 myList.prepend(8)
 print(myList)
+print(myList.length)
