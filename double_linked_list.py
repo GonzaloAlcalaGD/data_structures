@@ -62,6 +62,20 @@ class DoubleLinkedList():
         self.length += 1 
         return
 
+    
+    def traverse_to_index(self, idx) -> Node:
+        """
+        Traverses the list and return the desired node
+        """
+        current_node = self.head
+        count = 0
+
+        while count != idx:
+            current_node = current_node.next
+            count += 1
+        
+        return current_node
+
 
 DLinked = DoubleLinkedList()
 
