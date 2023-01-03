@@ -49,23 +49,12 @@ class Queue():
 
     def append(self, data) -> None:
         """
-        Appends the nodes into the list
-        If the list it's empty it will make both last and first point to the new node.
-        If not empty it will make the next of thenew node points to the present last 
-        node and then make  last node point the new node. 
+        Inserts the node to the first position in the list.
         """
         new_node = Node(data)
 
-        if not self.tail:
-            self.tail = new_node
-            self.head = self.tail
-            self.length += 1
-            return 
-        else:
-            self.tail.next = new_node
-            self.tail = new_node
-            self.length += 1
-            return
+        new_node.next = self.head
+        self.head = new_node
     
 
     def dequeue(self) -> None:
