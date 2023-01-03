@@ -33,7 +33,7 @@ class Queue():
         Queues the nodes into the list
         If the list it's empty it will make both last and first point to the new node.
         If not empty it will make the next of thenew node points to the present last 
-        node and then make  last node point the new node.
+        node and then make  last node point the new node. 
         """
         new_node = Node(data)
 
