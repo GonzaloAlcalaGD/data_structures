@@ -87,7 +87,35 @@ class LinkedList():
         self.tail = new_node
 
         return
+
     
+    def insert(self, idx, data) -> None:
+        """
+        Insert the node at the desired index position.
+        """
+        new_node = Node(data)
+        count = 0
+        current_node = self.head
+
+        if idx < 0 or idx > self.length:
+            logging.warning('Invalid index')
+        
+        if idx == 0:
+            self.prepend(data)
+
+        while current_node is not None:
+
+            if idx == self.length:
+                self.tail = new_node
+
+            if count == idx-1:
+                new_node.next = current_node.next
+                current_node.next = new_node
+                self.length += 1
+                break
+            current_node = current_node.next
+            count += 1
+        return
 
     
 myList = LinkedList()
@@ -99,6 +127,9 @@ myList.prepend('a')
 myList.append(12)
 myList.prepend(8)
 myList.prepend(7)
+myList.insert(idx = 3, data = 'z')
+myList.insert(idx = 9, data = 13)
+myList.insert(idx = 0, data = 6)
 print(myList)
 print(f'Length: {myList.length}')
 print(f'Head: {myList.head.data}')
