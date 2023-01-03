@@ -50,6 +50,17 @@ class DoubleLinkedList():
             return
 
 
+    def prepend(self, data) -> None:
+        """
+        Inserts the node to the first position in the list.
+        """
+        new_node = Node(data)
+
+        new_node.next = self.head
+        self.head.prev = new_node
+        self.head =  new_node
+        self.length += 1 
+        return
 
 
 DLinked = DoubleLinkedList()
@@ -57,8 +68,10 @@ DLinked = DoubleLinkedList()
 DLinked.append(10)
 DLinked.append(11)
 DLinked.append(12)
+DLinked.prepend(9)
+DLinked.append(13)
 
 print(DLinked)
-second = DLinked.head.next
-print(second.prev.data)
-print(second.next.data)
+print(f'Length: {DLinked.length}')
+print(f'Head: {DLinked.head.data}')
+print(f'Tail: {DLinked.tail.data}')
