@@ -76,6 +76,7 @@ class LinkedList():
 
         if self.head is None:
             self.head = new_node
+            self.tail = new_node
             self.length += 1
             return
         
@@ -83,6 +84,8 @@ class LinkedList():
             pass
         current_node.next = new_node
         self.length += 1
+        self.tail = new_node
+
         return
     
 
@@ -95,5 +98,8 @@ myList.prepend(9)
 myList.prepend('a')
 myList.append(12)
 myList.prepend(8)
+myList.prepend(7)
 print(myList)
-print(myList.length)
+print(f'Length: {myList.length}')
+print(f'Head: {myList.head.data}')
+print(f'Tail: {myList.tail.data}')
