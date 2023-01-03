@@ -6,7 +6,7 @@ class Node():
         """
         self.data = data
         self.next = None
-        self.previous = None
+        self.prev = None
 
 
 class DoubleLinkedList():
@@ -14,3 +14,48 @@ class DoubleLinkedList():
     def __init__(self) -> None:
         self.head = None
         self.tail = None
+        self.length = 0
+    
+
+    def __repr__(self) -> str:
+        """
+        Prints the current nodes in our list.
+        """
+        node = self.head
+        nodes = []
+
+        while node is not None:
+            nodes.append(node.data)
+            node = node.next
+        nodes.append('None')
+
+        return ' <-> '.join(str(item) for item in nodes)
+
+
+    def append(self, data) -> None:
+        """
+        Adds to the last 
+        """
+        new_node = Node(data)
+
+        if self.head is None:
+            self.head = new_node
+            self.tail = self.head
+            self.length += 1
+        else:
+            self.tail.next = new_node
+            new_node.prev = self.tail
+            self.tail = new_node
+            self.length += 1
+            return
+
+    
+
+
+DLinked = DoubleLinkedList()
+
+DLinked.append(10)
+DLinked.append(11)
+DLinked.append(12)
+
+print(DLinked)
