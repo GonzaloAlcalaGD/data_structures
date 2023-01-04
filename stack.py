@@ -13,6 +13,17 @@ class Stack():
         self.length = 0
     
 
+    def __iter__(self) -> None:
+        """
+        Iterates over the Stack
+        """
+        node = self.top
+
+        while node is not None:
+            yield node
+            node = node.next
+
+
     def peek(self) -> Node:
         """
         Returns the first node in the stack
@@ -20,11 +31,26 @@ class Stack():
         pass
     
 
-    def push(self, data) -> Node:
+    def push(self, data) -> str:
         """
         Adds a node into the top of the stack
         """
-        pass
+        new_node = Node(data)
+
+        if self.top is None:
+            self.top = new_node
+            self.bottom = new_node
+            self.length += 1
+            return f'Node with data {data} successfully allocated at the top of the stack'
+        
+        for node in self:
+            pass
+
+        node.next = new_node
+        self.bottom = new_node
+        self.length += 1
+
+        return  f'Node with data: {data} successfully allocated at the top of the stack'
 
 
     def pop(self) -> Node:
@@ -39,3 +65,11 @@ class Stack():
         Returns true if the stack it's empty or false if is not.
         """
         pass
+
+
+my_stack = Stack()
+
+for i in range(5):
+    print(my_stack.push(i))
+
+print(my_stack)
