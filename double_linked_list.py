@@ -109,6 +109,35 @@ class DoubleLinkedList():
             return
 
 
+    def remove(self, idx) -> None:
+        """
+        Removes the desired node at the index position
+        """
+
+        if idx < 0 or idx >= self.length:
+            logging.warning(f'Invalid index: {idx} ')
+            return
+
+        if idx == 0:
+            self.head.next.prev = None
+            self.head = self.head.next
+            self.length -= 1
+            return
+        
+        if idx == self.length-1:
+            self.tail = self.tail.prev
+            self.tail.next = None
+            self.length -= 1
+            return
+        else:
+            leader = self.traverse_to_index(idx-1)
+            unwanted_node = leader.next
+            holder = unwanted_node.next
+            leader.next = holder
+            holder.prev = leader
+            self.length -= 1
+            return
+
 DLinked = DoubleLinkedList()
 
 DLinked.append(10)
@@ -119,6 +148,7 @@ DLinked.append(13)
 DLinked.insert(4, 100)
 DLinked.insert(5, 101)
 DLinked.insert(0, 102)
+DLinked.remove(idx=7)
 print(DLinked)
 print(f'Length: {DLinked.length}')
 print(f'Head: {DLinked.head.data}')
