@@ -105,7 +105,7 @@ class LinkedList():
 
         while current_node is not None:
 
-            if idx == self.length:
+            if idx == self.length-1:
                 self.tail = new_node
 
             if count == idx-1:
@@ -170,7 +170,8 @@ print(myList)
 print(f'Length: {myList.length}')
 print(f'Head: {myList.head.data}')
 print(f'Tail: {myList.tail.data}')
-myList.reverse()
+myList.insert(idx= 4, data= 'e')
+# myList.reverse()
 print(myList)
 print(f'Length: {myList.length}')
 print(f'Head: {myList.head.data}')

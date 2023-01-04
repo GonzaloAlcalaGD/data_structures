@@ -1,3 +1,7 @@
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+
 class Node():
 
     def __init__(self, data) -> None:
@@ -76,6 +80,34 @@ class DoubleLinkedList():
         
         return current_node
 
+    
+    def insert(self, idx, data) -> None:
+        """
+        Insert's the node at the desired idx location.
+        """
+        new_node = Node(data)
+
+        if idx < 0 or idx >= self.length:
+            logging.warning(f'Invalid index: {idx} for node with data: {data} ')
+            return
+
+        if idx == 0:
+            self.prepend(data)
+            return
+        
+        if idx == self.length-1:
+            self.append(data)
+            return
+        else:
+            leader = self.traverse_to_index(idx-1)
+            holder = leader.next
+            leader.next = new_node
+            holder.prev = new_node
+            new_node.next = holder
+            new_node.prev = leader
+            self.length += 1
+            return
+
 
 DLinked = DoubleLinkedList()
 
@@ -84,7 +116,9 @@ DLinked.append(11)
 DLinked.append(12)
 DLinked.prepend(9)
 DLinked.append(13)
-
+DLinked.insert(4, 100)
+DLinked.insert(5, 101)
+DLinked.insert(0, 102)
 print(DLinked)
 print(f'Length: {DLinked.length}')
 print(f'Head: {DLinked.head.data}')
