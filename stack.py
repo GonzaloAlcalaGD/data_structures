@@ -78,7 +78,10 @@ class Stack():
         """
         Returns true if the stack it's empty or false if is not.
         """
-        pass
+        if self.length == 0:
+            return True
+        else:
+            return False
 
 
 my_stack = Stack()
@@ -86,5 +89,6 @@ my_stack = Stack()
 for i in range(5):
     print(my_stack.push(i))
 
-print(my_stack)
+# print(my_stack.is_empty())
+# print(my_stack)
 # print(my_stack.top.data)
