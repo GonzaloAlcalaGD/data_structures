@@ -53,7 +53,6 @@ class DoubleLinkedList():
             self.length += 1
             return
 
-
     def prepend(self, data) -> None:
         """
         Inserts the node to the first position in the list.
@@ -156,11 +155,13 @@ class DoubleLinkedList():
         if temp is not None:
             self.head = temp.prev
 
+
 DLinked = DoubleLinkedList()
 
 DLinked.append(10)
 DLinked.append(11)
 DLinked.append(12)
+
 DLinked.append(13)
 DLinked.append(14)
 DLinked.append(15)
