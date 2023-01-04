@@ -71,7 +71,17 @@ class Stack():
         """
         Removes and returns the top node in the stack
         """
-        pass
+        if self.top is None:
+            return None
+        
+        holder_node = self.top
+        self.top = self.top.next
+        self.length -= 1
+
+        if self.length == 0:
+            self.bottom = None
+            
+        return holder_node.data
 
     
     def is_empty(self) -> bool:
@@ -89,6 +99,7 @@ my_stack = Stack()
 for i in range(5):
     print(my_stack.push(i))
 
-# print(my_stack.is_empty())
-# print(my_stack)
-# print(my_stack.top.data)
+print(f'Top node : {my_stack.top.data}')
+print(f'Pop: {my_stack.pop()}')
+print(my_stack)
+print(f'Top node : {my_stack.top.data}')
