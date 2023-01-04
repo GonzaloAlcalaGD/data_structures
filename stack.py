@@ -24,11 +24,28 @@ class Stack():
             node = node.next
 
 
+    def __repr__(self) -> None:
+        """
+        Represents our Stacks as a string.
+        """
+        node = self.top
+        
+
+        while node is not None:
+            print(node.data)
+            print('↓')
+            node = node.next
+        
+        return 'None'
+
     def peek(self) -> Node:
         """
         Returns the first node in the stack
         """
-        pass
+        if self.length == 0:
+            return 'Stack it\'s empty'
+        else:
+            return self.top.data
     
 
     def push(self, data) -> str:
@@ -38,16 +55,13 @@ class Stack():
         new_node = Node(data)
 
         if self.top is None:
-            self.top = new_node
             self.bottom = new_node
+            self.top = self.bottom
             self.length += 1
             return f'Node with data {data} successfully allocated at the top of the stack'
-        
-        for node in self:
-            pass
 
-        node.next = new_node
-        self.bottom = new_node
+        new_node.next = self.top
+        self.top = new_node
         self.length += 1
 
         return  f'Node with data: {data} successfully allocated at the top of the stack'
@@ -73,3 +87,4 @@ for i in range(5):
     print(my_stack.push(i))
 
 print(my_stack)
+# print(my_stack.top.data)
