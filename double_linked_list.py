@@ -137,19 +137,41 @@ class DoubleLinkedList():
             holder.prev = leader
             self.length -= 1
             return
+    
+
+    def reverse(self) -> None:
+        """
+        Reverses the current double linked list.
+        """
+        temp = None
+        current_node = self.head
+        
+        while current_node is not None:
+            temp = current_node.prev
+            current_node.prev = current_node.next
+            current_node.next = temp
+            current_node = current_node.prev
+            self.tail = self.head
+
+        if temp is not None:
+            self.head = temp.prev
 
 DLinked = DoubleLinkedList()
 
 DLinked.append(10)
 DLinked.append(11)
 DLinked.append(12)
-DLinked.prepend(9)
 DLinked.append(13)
-DLinked.insert(4, 100)
-DLinked.insert(5, 101)
-DLinked.insert(0, 102)
-DLinked.remove(idx=7)
+DLinked.append(14)
+DLinked.append(15)
+DLinked.prepend(9)
+DLinked.append(16)
+
 print(DLinked)
 print(f'Length: {DLinked.length}')
+print(f'Head: {DLinked.head.data}')
+print(f'Tail: {DLinked.tail.data}')
+DLinked.reverse()
+print(DLinked)
 print(f'Head: {DLinked.head.data}')
 print(f'Tail: {DLinked.tail.data}')
