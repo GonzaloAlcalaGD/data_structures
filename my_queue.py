@@ -26,7 +26,18 @@ class Queue():
         """
         Enqueues the node into the last position of our queue
         """
-        return
+        node = Node(data)
+
+        if self.first is None:
+            self.first = node
+            self.last = self.first
+            self.length += 1
+            return
+        else:
+            self.last.next = node
+            self.last = node
+            self.length += 1
+            return
 
     
     def dequeue(self) -> None:
