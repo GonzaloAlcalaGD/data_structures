@@ -51,4 +51,7 @@ class Queue():
         """
         Returns true if the queue it's empty otherwise false.
         """
-        return
+        if self.first is None:
+            return True
+        else:
+            return False
