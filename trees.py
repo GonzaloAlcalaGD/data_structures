@@ -71,6 +71,25 @@ class Tree():
             return logging.info('Tree its empty')
     
 
+    def lookup(self, data) -> Node:
+        """
+        Traverses the Tree looking for the node, if it exist returns True
+        otherwhise returns False
+        """
+        current_node = self.root
+
+        while True:
+
+            if current_node is None:
+                return False
+            
+            if current_node.data == data:
+                return True
+            
+            if data < current_node.data: # Left path
+                current_node = current_node.left
+            else:
+                current_node = current_node.right # Right path
     
         
 
