@@ -1,3 +1,7 @@
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+
 class Node():
 
     def __init__(self, data) -> None:
@@ -25,18 +29,58 @@ class Tree():
         if self.root is None:
             self.root = node
             return
-        
+
         while True:
             # Left path
-            if data < current_node.data and current_node.left is None: 
-                current_node.left = node
-                return
-            else:
-                current_node = current_node.left
+            if data < current_node.data:
+                if current_node.left is None: 
+                    current_node.left = node
+                    return
+                else:
+                    current_node = current_node.left
 
             # Right path
-            if data > current_node.data and current_node.right is None:
-                current_node.right = node
-                return
-            else:
-                current_node = current_node.right
+            if data > current_node.data:
+                 if current_node.right is None:
+                    current_node.right = node
+                    return
+                 else:
+                    current_node = current_node.right
+
+
+    def traverse(self, current_node) -> None:
+        """
+        Traverses over the tree if the next node in the tree is not None
+        """
+
+        if current_node is not None:
+            self.traverse(current_node.left)
+            print(current_node.data)
+            self.traverse(current_node.right)
+            
+
+        
+    def print_tree(self) -> None:
+        """
+        Calls a recursive function to print the next node in the tree
+        """
+
+        if self.root is not None:
+            self.traverse(self.root)
+        else:
+            return logging.info('Tree its empty')
+    
+
+    
+        
+
+
+binaryTree = Tree()
+
+binaryTree.insert(10)
+binaryTree.insert(5)
+binaryTree.insert(6)
+binaryTree.insert(12)
+binaryTree.insert(8)
+
+binaryTree.print_tree()
