@@ -1,3 +1,5 @@
+from time import perf_counter
+
 def selection_sort(unsorted) -> list:
     length = len(unsorted) # Get length of our list
     i = 0 # Start index at 0
@@ -10,12 +12,15 @@ def selection_sort(unsorted) -> list:
                 min_val = unsorted[j] # Min value becomes the next element                
         unsorted[i], unsorted[idx] = unsorted[idx], unsorted[i] # Swap
         i += 1 
-
+    
     return unsorted
 
+start = perf_counter()
 sorted = selection_sort([99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0])
 print(sorted)
-
+stop = perf_counter()
+print(f'Elapsed time: {start} - {stop}')
+print(f'Execution time: {stop-start}')
 """
 44 < 99 
 [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0]
