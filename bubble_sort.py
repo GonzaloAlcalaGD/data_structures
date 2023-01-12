@@ -1,16 +1,16 @@
 def bubble_sort(my_list = []) -> list:
-    length = len(my_list)
-    for i in range(length):
+    length = len(my_list) # Get length of our list
+    for i in range(length): # Traverse the list
 
-        swap = False
+        swap = False 
 
         for j in range(0, length-i-1):
-            if my_list[j] > my_list[j+1]:
+            if my_list[j] > my_list[j+1]: # Compare our value with the next value in the list
                 swap = True
-                temp = my_list[j]
-                my_list[j] = my_list[j+1]
-                my_list[j+1] = temp
-        if not swap:
+                temp = my_list[j] # Save current value
+                my_list[j] = my_list[j+1] # Switch the next value to our current value position
+                my_list[j+1] = temp  # Switch our current value with the next value position
+        if not swap: # If not swap stop the traversing
             break
     return my_list
 
