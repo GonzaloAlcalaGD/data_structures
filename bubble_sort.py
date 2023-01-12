@@ -1,3 +1,5 @@
+from time import perf_counter
+
 def bubble_sort(my_list = []) -> list:
     length = len(my_list) # Get length of our list
     for i in range(length): # Traverse the list
@@ -14,8 +16,12 @@ def bubble_sort(my_list = []) -> list:
             break
     return my_list
 
+start = perf_counter()
 sorted_list = bubble_sort([9,8,7,6,5,4,3,2,1])
+stop = perf_counter()
 print(sorted_list)
+print(f'Elapsed time: {start} - {stop}')
+print(f'Execution time: {stop-start}')
 """
 -2 > 45 - False
 [-2, 45, 0, 11, -9]
